@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Consultar la base de datos</title>
+        <style type="text/css">
+            body {
+                background: #eeeeee;
+                margin: 0px 20% 0px 20%;
+                font: 10pt Helvetica, sans-serif;
+            }
+            span {
+                font-style: italic;
+            }
+            .code {
+                display: block;
+                border-radius: 5px;
+                background: #625D5D;
+                font-family: 'Courier New', Courier, monospace;
+                padding: 20px;
+                color: #ffffff;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Consultas</h1>
+        Para consultar la lista de todas las tablas accede a la dirección <span>/tablas</span>
+        Por ejemplo
+        <p class="code">
+            http://127.0.0.1:5000/tablas
+        </p>
+        Esta consulta devolverá el siguiente resultado:
+        <pre class="code">{
+    "estado": "OK", 
+    "mensaje": "", 
+    "resultado": [
+        "Detalles Pedidos", 
+        "Pedidos", 
+        "Proveedores", 
+        "Productos", 
+        "Clientes", 
+        "Empleados"
+    ]
+}</pre>
+        Para consultar todo el contenido de una tabla usar <span>/tablas/[NOMBRE_DE_LA_TABLA]</span>
+        Los resultados se muestan en una lista de diccionarios, donde cada uno de los diccionarios es una
+        fila de la tabla.
+        Por ejemplo, para acceder al contenido de la tabla 'Pedidos':
+        <p class="code">
+            http://127.0.0.1:5000/tablas/Pedidos
+        </p>
+        Esta consulta devolverá el siguiente resultado:
+        <pre class="code">{
+    "estado": "OK", 
+    "mensaje": "", 
+    "resultado": [
+        {
+            "IdPedido": "1", 
+            "IdCliente": "WILMK", 
+            "IdEmpleado": "24", 
+            "FechaPedido": "1996-07-04 00:00:00", 
+            "FechaEntrega": "1996-08-01 00:00:00", 
+            "FechaEnv\u00edo": "1996-07-16 00:00:00", 
+            "Cargo": "32.3800", 
+            "Destinatario": "Wilman Kala", 
+            "Direcci\u00f3nDestinatario": "Keskuskatu 45", 
+            "CiudadDestinatario": "Helsinki", 
+            "Regi\u00f3nDestinatario": "", 
+            "C\u00f3dPostalDestinatario": "21240", 
+            "Pa\u00edsDestinatario": "Finlandia"
+        }, 
+        {
+            "IdPedido": "2", 
+            "IdCliente": "TOMSP", 
+            "IdEmpleado": "25", 
+            "FechaPedido": "1996-07-05 00:00:00", 
+            ...
+        
+        }
+    ]
+}</pre>
+        <h1>Resultados</h1>
+        Los resultados a todas las consultas siempre contienen los siguientes campos:
+        <ul>
+            <li>estado</li>
+            <ul>
+                <li>'OK' en caso de que la consulta se haya realizado sin errores</li>
+                <li>'error' en caso de que ocurra algún error durante la consulta</li>
+            </ul>
+            <li>mensaje</li>
+            <ul>
+                <li>Contiene un mensaje de error en caso de que el estado sea 'error'</li>
+            </ul>
+            <li>resultado</li>
+            <ul>
+                <li>El resultado de la consulta si el estado es 'OK' y nulo si el estado es 'error'</li>
+            </ul>
+        </ul>
+        Por ejemplo, en caso de querer consultar la tabla inexistente 'Ventas':
+        <pre class="code">{
+    "estado": "error", 
+    "mensaje": "La tabla \"Ventas\" no existe", 
+    "resultado": null
+}</pre>
+    </body>
+</html>
