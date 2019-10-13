@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tabla - {{ table }}</title>
+        <style type="text/css">
+            body {
+                background: #EEEEEE;
+                font: 10pt Helvetica, sans-serif;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+            table tr, table th {
+                border: 1px solid #DDDDDD;
+                padding: 8px;
+            }
+            table tr:nth-child(even){background-color: #F2F2F2;}
+            table tr:hover {background-color: #DDDDDD;}
+            table th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #625D5D;
+                color: white;
+            }
+            div {
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <h1>{{ table }}</h1>
+            <a href="/html/tablas/{{ table }}/info">Volver atrás</a>
+            <a href="/html/tablas">Volver al índice de tablas</a>
+        </div>
+        <table>
+            <tr>
+                {% for k, v in data[0].items() %}
+                <th>{{ k }}</th>
+                {% endfor %}
+            </tr>
+            {% for r in data %}
+            <tr>
+                {% for k, v in r.items() %}
+                <td>{{ v }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>

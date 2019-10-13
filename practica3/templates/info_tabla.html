@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Información de la tabla - {{ table }}</title>
+        <style type="text/css">
+            body {
+                background: #EEEEEE;
+                font: 10pt Helvetica, sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>{{ table }}</h1>
+        <h2></h2>
+        <ul>
+        {% for col in data['columnas'] %}
+            <li>{{ col }}</li>
+        {% endfor %}
+        </ul>
+        <h2>Número de registros: {{ data ['num_registros'] }}</h2>
+        <a href="/html/tablas/{{ table }}">Ver la tabla</a>
+    </body>
+</html>

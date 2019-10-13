@@ -4,7 +4,7 @@
         <title>Consultar la base de datos</title>
         <style type="text/css">
             body {
-                background: #eeeeee;
+                background: #EEEEEE;
                 margin: 0px 20% 0px 20%;
                 font: 10pt Helvetica, sans-serif;
             }
@@ -13,16 +13,27 @@
             }
             .code {
                 display: block;
-                border-radius: 5px;
+                border-top: solid 2px #000000;
+                border-radius: 2px;
                 background: #625D5D;
                 font-family: 'Courier New', Courier, monospace;
                 padding: 20px;
-                color: #ffffff;
+                color: #FFFFFF;
             }
         </style>
     </head>
     <body>
-        <h1>Consultas</h1>
+        <h1>Database explorer (Flask API)</h1>
+        Si deseas consultar la versión html pulsa <a href="/html/tablas">aquí</a>
+        <p>
+            En la versión html los endpoints son los mismos que
+            en la API pero precedidos de <span>/html/</span>. Por ejemplo:
+        </p>
+        <p class="code">
+            http://127.0.0.1:5000/html/tablas
+        </p>
+        Mostrará la lista de tablas disponibles en la base de datos. A continuación se muestra como debe usar la API. 
+        <h2>Consultas</h2>
         Para consultar la lista de todas las tablas accede a la dirección <span>/tablas</span>
         Por ejemplo
         <p class="code">
@@ -78,7 +89,7 @@
         }
     ]
 }</pre>
-        <h1>Resultados</h1>
+        <h2>Resultados</h2>
         Los resultados a todas las consultas siempre contienen los siguientes campos:
         <ul>
             <li>estado</li>

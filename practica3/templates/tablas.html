@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Listado de tablas</title>
+        <style type="text/css">
+            body {
+                background: #EEEEEE;
+                font: 10pt Helvetica, sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Tablas en la base de datos</h1>
+        <ul>
+        {% for table in tables %}
+            <li><a href="/html/tablas/{{ table }}/info">{{ table }}</a></li>
+        {% endfor %}
+        </ul>
+    </body>
+</html>
