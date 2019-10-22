@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Blog</title>
+        <link href="https://fonts.googleapis.com/css?family=Anton|Libre+Franklin|Open+Sans&display=swap" rel="stylesheet"> 
+        <style type="text/css">
+            body {
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+            #header {
+                position: absolute;
+                top:0px;
+                left:0px;
+                right:0px;
+                height: 150px;
+                background: #FF4C3B;
+            }
+            #header span {
+                font-family: 'Open Sans', sans-serif;
+                display: block;
+                height: 50px;
+                font-size: 2em;
+                color: #FFFFFF;
+                text-align: center;
+            }
+            #header ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: #333;
+                height: 50px;
+            }
+            #header ul li {
+                height: 50px;
+                float: left;
+            }
+            #header ul li:hover {
+                background-color: #555;
+                color: white;
+            }
+            #header ul li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+            #header ul li a:hover {
+                background-color: #111;
+            }
+            #content {
+                position: fixed;
+                overflow: scroll;
+                top:50px;
+                left:0px;
+                right:0px;
+                bottom:0px;
+            }
+            .post {
+                font-family: 'Libre Franklin', sans-serif;
+                margin: 50px 20% -40px 20%;
+                padding: 50px;
+                background: ghostwhite;
+            }
+            .post h1 {
+                font-family: 'Anton', sans-serif;
+                color:rgb(24, 24, 24);
+            }
+            .post .created, .post .published {
+                font-style: italic;
+            }
+            .post .author {
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="header">
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/admin">Administración</a></li>
+            </ul>
+            <span>El blog</span>
+        </div>
+        <div id="content">
+            {% for p in posts %}
+            <div class="post">
+                <h1>{{ p.title }}</h1>
+                <span class="created">Creado el {{ p.created_date }}</span>
+                {% if p.published_date is not None %}
+                <span class="published">y publicado el {{ p.published_date }}</span>
+                {% endif %}
+                por <span class="author">{{ p.author }}</span>
+                <p>{{ p.text }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </body>
+</html>
